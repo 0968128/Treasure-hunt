@@ -1,0 +1,43 @@
+html, body {
+    background-color: #70CF51;
+    font-family: 'Press Start 2P', cursive;
+    overflow:hidden;
+    margin:0px; padding:0px;
+    background-image: url('../images/sea.png');
+    background-repeat: repeat;
+}
+
+script {
+    display: none !important;
+}
+
+game * {
+    position: absolute;
+    display: block;
+    margin:0px; padding:0px;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+}
+
+player-ship {
+    width: 113px; height: 66px;
+    background-image: url(../images/playership.png); 
+}
+pirate-ship {
+    width: 113px; height: 66px;
+    background-image: url(../images/pirateship.png); 
+}
+
+treasure-chest {
+    width: 47px; height: 33px;
+    background-image: url(../images/chest.png); 
+}
+
+ui {
+    font-size:42px;
+    text-shadow: 8px 8px 0px black;
+    color:white;
+    padding:20px;
+    width:100%;
+    text-align: center;
+}
