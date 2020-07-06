@@ -6,9 +6,6 @@ class PirateShip extends GameObject implements Observer {
     constructor(playership:PlayerShip, treasure:Treasure) {
         super()
 
-        let game = document.getElementsByTagName("game")[0]
-        game.appendChild(this)
-
         this.x = Math.random() * window.innerWidth
         this.y = Math.random() * window.innerHeight
         this.speedX = this.speedY = 3
