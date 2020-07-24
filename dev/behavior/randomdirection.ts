@@ -4,6 +4,7 @@ class RandomDirection implements Behavior {
     private counter:number = 0
 
     constructor(object:PirateShip) {
+        // Field gelijkstellen aan parameter
         this.object = object
     }
 
@@ -11,16 +12,18 @@ class RandomDirection implements Behavior {
     update(destinationX:number, destinationY:number, myPosX:number, myPosY:number) {
         this.counter++
 
+        // Beweging vaststellen
         this.object.x += Math.cos(this.object.degToRad(this.object.rotation)) * this.object.speedX
         this.object.y += Math.sin(this.object.degToRad(this.object.rotation)) * this.object.speedY
 
-        // turn the ship every 60 frames
+        // Laat het schip een andere kant op varen als de teller 60 bereikt
         if(this.counter > 60) {
             this.counter = 0
 
-            // determine rotation
+            // Bepaal een willekeurige andere rotatie
             this.object.rotationSpeed = Math.round(Math.random() * 3)
-            // determine left or right rotation
+            
+            // Bepaal of het schip links- of rechtsom draait
             this.object.rotationSpeed *= Math.random() < 0.5 ? -1 : 1
         }
         this.object.rotation += this.object.rotationSpeed
