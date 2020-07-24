@@ -30,14 +30,17 @@ abstract class GameObject extends HTMLElement {
         this.draw()
     }
 
+    // Gameobject op de juiste manier in het speelveld laten verschijnen
     private draw():void {
         this.style.transform = `translate(${this.x}px, ${this.y}px) rotate(${this.rotation}deg)`
     }
 
+    // Graden naar radialen omrekenen
     public degToRad(degrees:number):number {
         return degrees * Math.PI / 180
     }
 
+    // Check op botsing van dit gameobject met een gegeven ander gameobject
     public hasCollision(gameObject:GameObject):boolean {
         return (
             this._x < gameObject._x + gameObject.width &&
