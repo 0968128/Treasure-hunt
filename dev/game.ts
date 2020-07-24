@@ -11,11 +11,16 @@ class Game {
     // Setters
     public set gameOver(value:boolean) { this._gameOver = value }
 
+    // Deze class is een singleton, dus heeft een private constructor
     private constructor() {
-        // Schepen laten spawnen
+        // Schip van de speler en de schat laten spawnen
         this.playership = new PlayerShip()
         this.treasure = new Treasure()
+        
+        // Spelerschip en schat in de gameObjects array zetten
         this.gameObjects.push(this.playership, this.treasure)
+        
+        // Vijandelijke schepen spawnen
         this.spawnNewPirateShip()
 
         // Gameloop starten
@@ -32,7 +37,7 @@ class Game {
             this.checkCollision(gameObject)
         }
 
-        // Gameloop aan de gang houden
+        // Gameloop aan de gang houden zolang het geen game over is
         if(!this._gameOver) {
             requestAnimationFrame(() => this.gameLoop())
         } else {
@@ -45,9 +50,12 @@ class Game {
     }
 
     public static getInstance():Game {
+        // De eerste keer (als het window wordt geladen) is er nog geen game, dus die wordt aangemaakt als hij niet bestaat
         if(!Game.instance) {
             Game.instance = new Game()
         }
+        
+        // Geef de (zojuist aangemaakte) game terug
         return Game.instance
     }
 
@@ -61,15 +69,18 @@ class Game {
     }
 
     public removeGameObject(gameObject:GameObject):void {
+        // Verwijder het meegegeven gameobject door zijn plek in de array te traceren
         let index = this.gameObjects.indexOf(gameObject)
         this.gameObjects.splice(index, 1)
     }
 
     public spawnNewPirateShip():void {
+        // Nieuw piratenschip aanmaken en in de gameObjects array zetten
         this.gameObjects.push(new PirateShip(this.playership, this.treasure))
     }
 
     public addScore():void {
+        // Punten toekennen voor verzamelde schatten
         this.score++
     }
 }
