@@ -7,6 +7,10 @@ class PirateShip extends GameObject implements Observer {
     constructor(playership:PlayerShip, treasure:Treasure) {
         super()
 
+        // Object in de game zetten
+        let game = document.getElementsByTagName("game")[0];
+        game.appendChild(this);
+
         // Bij het spawnen krijgt het schip een willekeurige locatie in het speelveld
         this.x = Math.random() * window.innerWidth
         this.y = Math.random() * window.innerHeight
